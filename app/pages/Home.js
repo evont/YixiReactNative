@@ -2,13 +2,98 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
+    Image,
     StyleSheet,
+    Dimensions,
     TouchableHighlight
 } from 'react-native';
 import global_style from '../global_style';
 import {fetchHome} from '../api';
 import Spinner from 'react-native-spinkit';
 import Swiper from 'react-native-swiper';
+import ParallaxView from 'react-native-parallax-view';
+
+const ScreenHeight = Dimensions.get('window').height;
+const ScreenWidth = Dimensions.get('window').width;
+
+const styles = StyleSheet.create({
+  container : {
+     flex: 1,
+  },
+  albumHeader : {
+     flex : 1,
+     paddingHorizontal : 16,
+     paddingBottom : 24,
+     justifyContent : 'flex-end'
+  },
+  albumTitle : {
+     color : '#fff',
+     fontSize : 22,
+     fontWeight : '600'
+  },
+  albumIntro : {
+     marginTop : 24,
+     lineHeight : 20,
+     color : '#fff',
+     fontSize : 14,
+     fontWeight : '100',
+  },
+  albumDetail : {
+     backgroundColor : '#222',
+     paddingHorizontal : 16,
+     paddingVertical : 25
+  },
+  albumContent : {
+    color : '#fff',
+    fontSize : 14,
+    lineHeight : 20,
+    fontWeight : '200'
+  },
+  lectureLink : {
+     justifyContent : 'center',
+     marginTop : 36,
+     height : 100,
+     width : ScreenWidth - 32,
+     flexWrap : 'nowrap',
+     borderRadius : 4
+  },
+  lectureBg : {
+     position : 'absolute',
+     top : 0,
+     left : 0,
+     zIndex : 1,
+     height : 100,
+     width : ScreenWidth - 32,
+     borderRadius : 4
+  },
+  lectureDesc : {
+     flex : 1,
+     zIndex : 3,
+     paddingLeft : 10,
+     justifyContent : 'center',
+     borderRadius : 4,
+     backgroundColor : 'rgba(0, 0, 0, 0.4)'
+  },
+  descTitle : {
+     color : '#fff',
+     fontSize : 15,
+     fontWeight : '400'
+  },
+  descLecturer : {
+     color : '#ccc',
+     fontWeight : '100',
+     fontSize : 10,
+     marginTop : 5
+  },
+  linkIcon : {
+     position : 'absolute',
+     right : 10,
+     top : 44,
+     height : 12,
+     width : 12,
+     zIndex : 3
+  }
+})
 
 export default class Home extends Component{
   constructor(props) {
@@ -46,11 +131,11 @@ export default class Home extends Component{
                             color='#cc3434'/>
                 </View>
            : this.state.albumList.data ?
-                <Swiper loop={false} onMomentumScrollEnd={this._onMomentumScrollEnd}>
+                <Swiper loop={false} onMomentumScrollEnd={this._onMomentumScrollEnd} showsPagination={false}>
                    {Array.prototype.filter.call(this.state.albumList.data, (item, k) =>
                        k <= this.state.loadCount
                    ).map( item =>
-                       <Text key={item.id}>{item.id}</Text>
+                       <AlbumItem album={item} key={item.id} {...this.props}/>
                    )}
                 </Swiper>
            : <TouchableHighlight style={global_style.hintContainer} onPress={ this.fetchData }>
@@ -65,10 +150,36 @@ export default class Home extends Component{
      )
   }
 }
-
-const styles = StyleSheet.create({
-  container : {
-     flex: 1,
-     paddingTop : 30
+class AlbumItem extends Component {
+  constructor(props){
+    super(props);
   }
-})
+  render() {
+    let bg = this.props.album ? this.props.album.background.replace(".1536x1000","") : "";
+    let linkBg = this.props.album ? this.props.album.lectures[0].lecturer.background.replace(".1242x505","") : "";
+    return <ParallaxView
+          backgroundSource={{url : bg}}
+          windowHeight={ScreenHeight}
+          header={(
+              <View style={styles.albumHeader}>
+                  <Text style={styles.albumTitle}>{this.props.album ? this.props.album.title : ""}</Text>
+                  <Text style={styles.albumIntro}>{this.props.album ? this.props.album.desc : ""}</Text>
+              </View>
+          )}
+      >
+        <View style={styles.albumDetail}>
+            <Text style={styles.albumContent}>{this.props.album ? this.props.album.purecontent : ""}</Text>
+            <TouchableHighlight onPress={ () => this.props.navigation.navigate('Detail')}>
+                <View style={styles.lectureLink}>
+                    <Image source={{ url : linkBg }} style={styles.lectureBg}  resizeMode='cover'/>
+                    <View style={styles.lectureDesc}>
+                        <Text style={styles.descTitle}>{this.props.album.lectures[0].title}</Text>
+                        <Text style={styles.descLecturer}>{ this.props.album.lectures[0].lecturer.nickname}</Text>
+                    </View>
+                    <Image source={require('../images/icon-link.png')} style={styles.linkIcon}/>
+                </View>
+            </TouchableHighlight>
+        </View>
+      </ParallaxView>;
+  }
+}

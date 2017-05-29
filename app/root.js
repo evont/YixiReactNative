@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Lecturer from './pages/Lecturer';
 import Lecture from './pages/Lecture';
 import Record from './pages/Record';
+import Detail from './pages/Detail';
 import ControlPanel from './components/ControlPanel';
 
 import global_style from './global_style';
@@ -78,7 +79,8 @@ const AppNavigator = StackRouter({
   Home: {screen: Home},
   Lecturer: {screen: Lecturer},
   Lecture: {screen: Lecture},
-  Record: {screen: Record}
+  Record: {screen: Record},
+  Detail : {screen : Detail},
 }, {
   initialRouteName: 'Home',
 });
