@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text
+    Text,
+    Image,
+    TouchableHighlight
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import Drawer from 'react-native-drawer';
@@ -11,6 +13,8 @@ import Lecturer from './pages/Lecturer';
 import Lecture from './pages/Lecture';
 import Record from './pages/Record';
 import ControlPanel from './components/ControlPanel';
+
+import global_style from './global_style';
 
 import {
   createNavigator,
@@ -55,7 +59,9 @@ class DrawerView extends Component{
            tweenDuration={400}
            tapToClose={true}
            >
-
+              <TouchableHighlight style={global_style.drawerBtn} onPress={ () => this._drawer.open() }>
+                  <Image source={require('./images/logo.png')} style={global_style.drawerIcon} />
+              </TouchableHighlight>
               <Main
                 navigation={addNavigationHelpers({
                   ...this.props.navigation,
