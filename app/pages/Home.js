@@ -169,7 +169,7 @@ class AlbumItem extends Component {
       >
         <View style={styles.albumDetail}>
             <Text style={styles.albumContent}>{this.props.album ? this.props.album.purecontent : ""}</Text>
-            <TouchableHighlight onPress={ () => this.props.navigation.navigate('Detail')}>
+            <TouchableHighlight onPress={ () => this.props.navigation.navigate('Detail', {lectures : this.props.album}) }>
                 <View style={styles.lectureLink}>
                     <Image source={{ url : linkBg }} style={styles.lectureBg}  resizeMode='cover'/>
                     <View style={styles.lectureDesc}>
