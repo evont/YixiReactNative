@@ -48,7 +48,7 @@ class DrawerView extends Component{
            content={<ControlPanel  navigation={this.props.navigation} />}
            openDrawerOffset={0.3}
            panCloseMask={0.2}
-           closedDrawerOffset={-3}
+           closedDrawerOffset={0}
            styles={drawerStyles}
            tweenHandler={(ratio) => {
               return {

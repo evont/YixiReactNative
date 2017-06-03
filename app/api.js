@@ -1,8 +1,8 @@
-const apiPrefix =  'http://localhost:3000/api/v1';
+const apiPrefix =  'http://192.168.0.102:3000/api/v1';
 const _asyncFetch = function(apiUrl, header){
   try {
      let response = new Promise((resolve, reject) => {
-      fetch(apiUrl, header || {}).then(res => {
+      fetch(apiUrl).then(res => {
         if (res.ok) {
             return res.json()
         } else {
@@ -28,5 +28,10 @@ const _asyncFetch = function(apiUrl, header){
 
 exports.fetchHome = function() {
   const apiUrl = `${apiPrefix}/album`;
+  return _asyncFetch(apiUrl);
+}
+
+exports.fetchLectureItem = function(id){
+  const apiUrl = `${apiPrefix}/lecture/detail/${id}`;
   return _asyncFetch(apiUrl);
 }

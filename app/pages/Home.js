@@ -22,20 +22,20 @@ const styles = StyleSheet.create({
   },
   albumHeader : {
      flex : 1,
-     paddingHorizontal : 16,
-     paddingBottom : 24,
+     paddingHorizontal : 24,
+     paddingBottom : 32,
      justifyContent : 'flex-end'
   },
   albumTitle : {
      color : '#fff',
-     fontSize : 22,
+     fontSize : 26,
      fontWeight : '600'
   },
   albumIntro : {
-     marginTop : 24,
-     lineHeight : 20,
+     marginTop : 26,
+     lineHeight : 24,
      color : '#fff',
-     fontSize : 14,
+     fontSize : 16,
      fontWeight : '100',
   },
   albumDetail : {
@@ -45,26 +45,26 @@ const styles = StyleSheet.create({
   },
   albumContent : {
     color : '#fff',
-    fontSize : 14,
-    lineHeight : 20,
+    fontSize : 18,
+    lineHeight : 26,
     fontWeight : '200'
   },
   lectureLink : {
      justifyContent : 'center',
      marginTop : 36,
-     height : 100,
+     height : 120,
      width : ScreenWidth - 32,
      flexWrap : 'nowrap',
-     borderRadius : 4
+     borderRadius : 8
   },
   lectureBg : {
      position : 'absolute',
      top : 0,
      left : 0,
      zIndex : 1,
-     height : 100,
+     height : 120,
      width : ScreenWidth - 32,
-     borderRadius : 4
+     borderRadius : 8
   },
   lectureDesc : {
      flex : 1,
@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
   },
   descTitle : {
      color : '#fff',
-     fontSize : 15,
+     fontSize : 18,
      fontWeight : '400'
   },
   descLecturer : {
      color : '#ccc',
      fontWeight : '100',
-     fontSize : 10,
-     marginTop : 5
+     fontSize : 14,
+     marginTop : 8
   },
   linkIcon : {
      position : 'absolute',
@@ -169,7 +169,7 @@ class AlbumItem extends Component {
       >
         <View style={styles.albumDetail}>
             <Text style={styles.albumContent}>{this.props.album ? this.props.album.purecontent : ""}</Text>
-            <TouchableHighlight onPress={ () => this.props.navigation.navigate('Detail', {lectures : this.props.album}) }>
+            <TouchableHighlight onPress={ () => this.props.navigation.navigate('Detail', {lectures : this.props.album, lecturesId : this.props.album.lectures[0].id}) }>
                 <View style={styles.lectureLink}>
                     <Image source={{ url : linkBg }} style={styles.lectureBg}  resizeMode='cover'/>
                     <View style={styles.lectureDesc}>

@@ -24,7 +24,7 @@ export default global_style = StyleSheet.create({
      zIndex : 5
   },
   drawerIcon : {
-     width : 30,
-     height : 30,
+     width : 40,
+     height : 40,
   }
 })
