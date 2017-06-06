@@ -1,4 +1,4 @@
-const apiPrefix =  'http://192.168.0.102:3000/api/v1';
+const apiPrefix =  'http://192.168.0.101:3000/api/v1';
 const _asyncFetch = function(apiUrl, header){
   try {
      let response = new Promise((resolve, reject) => {
