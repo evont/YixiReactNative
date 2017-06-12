@@ -134,8 +134,8 @@ export default class Home extends Component{
                 <Swiper loop={false} onMomentumScrollEnd={this._onMomentumScrollEnd} showsPagination={false}>
                    {Array.prototype.filter.call(this.state.albumList.data, (item, k) =>
                        k <= this.state.loadCount
-                   ).map( item =>
-                       <AlbumItem album={item} key={item.id} {...this.props}/>
+                   ).map( (item, k) =>
+                       <AlbumItem album={item} loopKey={k} key={item.id} {...this.props}/>
                    )}
                 </Swiper>
            : <TouchableHighlight style={global_style.hintContainer} onPress={ this.fetchData }>
@@ -169,7 +169,7 @@ class AlbumItem extends Component {
       >
         <View style={styles.albumDetail}>
             <Text style={styles.albumContent}>{this.props.album ? this.props.album.purecontent : ""}</Text>
-            <TouchableHighlight onPress={ () => this.props.navigation.navigate('Detail', {lectures : this.props.album, lecturesId : this.props.album.lectures[0].id}) }>
+            <TouchableHighlight onPress={ () => this.props.navigation.navigate('Detail', {lectures : this.props.album, lecturesId : this.props.album.lectures[0].id, loopKey : this.props.loopKey}) }>
                 <View style={styles.lectureLink}>
                     <Image source={{ url : linkBg }} style={styles.lectureBg}  resizeMode='cover'/>
                     <View style={styles.lectureDesc}>

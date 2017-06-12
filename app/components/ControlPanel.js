@@ -45,7 +45,8 @@ export default class ControlPanel extends Component{
     this.locationChange = this.locationChange.bind(this);
   }
   locationChange(location){
-     this.props.navigation.dispatch(resetAction(location))
+    let { navigator } = this.props.navigation;
+    navigator.dispatch({ type: 'Navigate', location});
   }
   render() {
     let _self = this;

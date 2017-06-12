@@ -13,6 +13,7 @@ import Lecturer from './pages/Lecturer';
 import Lecture from './pages/Lecture';
 import Record from './pages/Record';
 import Detail from './pages/Detail';
+import PureContent from './pages/PureContent';
 import ControlPanel from './components/ControlPanel';
 
 import global_style from './global_style';
@@ -22,6 +23,7 @@ import {
   createNavigationContainer,
   StackRouter,
   addNavigationHelpers,
+  StackNavigator
 } from 'react-navigation';
 
 class DrawerView extends Component{
@@ -40,12 +42,23 @@ class DrawerView extends Component{
 
     }
     render(){
-      const {routes, index} = this.props.navigation.state;
-      const Main = this.props.router.getComponentForState(this.props.navigation.state);
+      //const {routes, index} = this.props.navigation.state;
+      const AppNavigator = StackNavigator({
+        Home: {screen: Home},
+        Lecturer: {screen: Lecturer},
+        Lecture: {screen: Lecture},
+        Record: {screen: Record},
+        Detail : {screen : Detail},
+        PureContent : {screen : PureContent}
+      }, {
+        initialRouteName: 'Home',
+        headerMode : 'none'
+      })
+      //const Main = this.props.router.getComponentForState(this.props.navigation.state);
        return (
          <Drawer
            ref={ref => this._drawer = ref}
-           content={<ControlPanel  navigation={this.props.navigation} />}
+           content={<ControlPanel navigation={this.navigator} />}
            openDrawerOffset={0.3}
            panCloseMask={0.2}
            closedDrawerOffset={0}
@@ -63,30 +76,16 @@ class DrawerView extends Component{
               <TouchableHighlight style={global_style.drawerBtn} onPress={ () => this._drawer.open() }>
                   <Image source={require('./images/logo.png')} style={global_style.drawerIcon} />
               </TouchableHighlight>
-              <Main
-                navigation={addNavigationHelpers({
-                  ...this.props.navigation,
-                  state: routes[index],
-                  openDrawer: () => this._drawer.open(),
-                })}
-              />
+              <AppNavigator ref={nav => { this.navigator = nav; }}/>
           </Drawer>
 
       )
     }
 }
-const AppNavigator = StackRouter({
-  Home: {screen: Home},
-  Lecturer: {screen: Lecturer},
-  Lecture: {screen: Lecture},
-  Record: {screen: Record},
-  Detail : {screen : Detail},
-}, {
-  initialRouteName: 'Home',
-});
+
 const drawerStyles = {
   main: { shadowColor: '#333', shadowOpacity: 0.8, shadowRadius: 12 , shadowOffset : { width: -4, height: -2}},
 }
-const App = createNavigationContainer(createNavigator(AppNavigator)(DrawerView));
+// const App = createNavigationContainer(createNavigator(AppNavigator)(DrawerView));
 
-export default App;
+export default DrawerView;
