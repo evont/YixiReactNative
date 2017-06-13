@@ -58,7 +58,7 @@ class DrawerView extends Component{
        return (
          <Drawer
            ref={ref => this._drawer = ref}
-           content={<ControlPanel navigation={this.navigator} />}
+           content={<ControlPanel navigation={AppNavigator.navigation} />}
            openDrawerOffset={0.3}
            panCloseMask={0.2}
            closedDrawerOffset={0}
