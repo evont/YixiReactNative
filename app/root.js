@@ -19,16 +19,24 @@ import ControlPanel from './components/ControlPanel';
 import global_style from './global_style';
 
 import {
-  createNavigator,
-  createNavigationContainer,
-  StackRouter,
-  addNavigationHelpers,
   StackNavigator
 } from 'react-navigation';
 
+const AppNavigator = StackNavigator({
+  Home: {screen: Home},
+  Lecturer: {screen: Lecturer},
+  Lecture: {screen: Lecture},
+  Record: {screen: Record},
+  Detail : {screen : Detail},
+  PureContent : {screen : PureContent}
+}, {
+  initialRouteName: 'Home',
+  headerMode : 'none'
+})
 class DrawerView extends Component{
     constructor(props) {
         super(props);
+        this._navigatorTo = this._navigatorTo.bind(this);
     }
     componentDidMount() {
       // do anything while splash screen keeps, use await to wait for an async task.
@@ -41,24 +49,18 @@ class DrawerView extends Component{
         this._drawer.close();
 
     }
+    _navigatorTo(location){
+        this.navigator.dispatch({ type: 'Navigation/NAVIGATE', routeName: location });
+        this._drawer.close();
+    }
     render(){
       //const {routes, index} = this.props.navigation.state;
-      const AppNavigator = StackNavigator({
-        Home: {screen: Home},
-        Lecturer: {screen: Lecturer},
-        Lecture: {screen: Lecture},
-        Record: {screen: Record},
-        Detail : {screen : Detail},
-        PureContent : {screen : PureContent}
-      }, {
-        initialRouteName: 'Home',
-        headerMode : 'none'
-      })
+
       //const Main = this.props.router.getComponentForState(this.props.navigation.state);
        return (
          <Drawer
            ref={ref => this._drawer = ref}
-           content={<ControlPanel navigation={AppNavigator.navigation} />}
+           content={<ControlPanel navigatorTo={ location => this._navigatorTo(location)} />}
            openDrawerOffset={0.3}
            panCloseMask={0.2}
            closedDrawerOffset={0}

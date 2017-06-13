@@ -6,16 +6,6 @@ import {
     TouchableHighlight,
     StyleSheet
 } from 'react-native';
-
-import {NavigationActions} from 'react-navigation'
-
-const resetAction = (routeName) => NavigationActions.reset({
-  index: 0,
-  actions: [
-    NavigationActions.navigate({routeName: routeName, drawer: 'close'}),
-  ]
-});
-
 const listData = [
   {
     name : 'Home',
@@ -23,15 +13,15 @@ const listData = [
     images : require('../images/icon-menu-home.png')
   },
   {
-    name : 'Lecture',
+    name : 'Lecturer',
     chinese : '演讲',
     images : require('../images/icon-menu-lecture.png')
 
   },
   {
-    name : 'Lecturer',
+    name : 'Lecture',
     chinese : '讲者',
-    images : require('../images/icon-menu-lecturer.png')
+    images : require('../images/icon-menu-lecture.png')
   },
   {
     name : 'Record',
@@ -42,11 +32,6 @@ const listData = [
 export default class ControlPanel extends Component{
   constructor(props){
     super(props);
-    this.locationChange = this.locationChange.bind(this);
-  }
-  locationChange(location){
-    let { navigator } = this.props.navigation;
-    navigator.dispatch({ type: 'Navigate', location});
   }
   render() {
     let _self = this;
@@ -54,7 +39,7 @@ export default class ControlPanel extends Component{
         <View style={styles.container}>
             {
               listData.map(function(ele, k){
-               return <TouchableHighlight underlayColor='#ccc' onPress={ () => _self.locationChange(`${ele.name}`) } key={`list-item-${k}`} >
+               return <TouchableHighlight underlayColor='#ccc' onPress={ () => _self.props.navigatorTo(`${ele.name}`) } key={`list-item-${k}`} >
                     <View style={styles.list_item}>
                        <Image style={styles.item_icon} source={ele.images} />
                        <Text style={styles.item_title}>{ele.chinese}</Text>
@@ -70,7 +55,7 @@ export default class ControlPanel extends Component{
 const styles = StyleSheet.create({
   container : {
      flex: 1,
-     paddingTop: 30,
+     paddingTop: 20,
   },
   list_item : {
      position : 'relative',
