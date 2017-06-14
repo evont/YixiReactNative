@@ -35,3 +35,9 @@ exports.fetchLectureItem = function(id){
   const apiUrl = `${apiPrefix}/lecture/detail/${id}`;
   return _asyncFetch(apiUrl);
 }
+
+exports.fetchLecture = function(api_type) {
+  const apiUrl = `${apiPrefix}/lecture/list/${api_type}/1/desc`;
+  console.log(apiUrl);
+  return _asyncFetch(apiUrl);
+}

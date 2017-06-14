@@ -13,15 +13,15 @@ const listData = [
     images : require('../images/icon-menu-home.png')
   },
   {
-    name : 'Lecturer',
+    name : 'Lecture',
     chinese : '演讲',
     images : require('../images/icon-menu-lecture.png')
 
   },
   {
-    name : 'Lecture',
+    name : 'Lecturer',
     chinese : '讲者',
-    images : require('../images/icon-menu-lecture.png')
+    images : require('../images/icon-menu-lecturer.png')
   },
   {
     name : 'Record',
