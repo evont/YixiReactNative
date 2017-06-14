@@ -4,6 +4,7 @@ import {
     Text,
     Image,
     StyleSheet,
+    ScrollView,
     TouchableHighlight
 } from 'react-native';
 import Spinner from 'react-native-spinkit';
@@ -181,13 +182,13 @@ export default class Lecture extends Component{
             tabBarUnderlineStyle = { styles.underlineStyle}
             renderTabBar={() => <ScrollableTabBar />}>
              {albumList.map( (ele, ind) =>
-                <View tabLabel={ele.date} key={`date-${ind}`}>
+                <ScrollView tabLabel={ele.date} key={`date-${ind}`}>
                     {this.renderLectures(ele.lectures)}
-                </View>
+                </ScrollView>
              )}
           </ScrollableTabView>
       }else{
-          return this.renderLectures(albumList);
+          return <ScrollView>{this.renderLectures(albumList)}</ScrollView>
       }
   }
   render() {
