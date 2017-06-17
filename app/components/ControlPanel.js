@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   item_title : {
      marginLeft : 54,
      flex : 1,
+     fontSize : 18,
      fontWeight : '100'
   }
 })

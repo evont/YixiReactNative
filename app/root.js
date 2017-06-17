@@ -30,7 +30,7 @@ const AppNavigator = StackNavigator({
   Detail : {screen : Detail},
   PureContent : {screen : PureContent}
 }, {
-  initialRouteName: 'Lecturer',
+  initialRouteName: 'Home',
   headerMode : 'none'
 })
 class DrawerView extends Component{

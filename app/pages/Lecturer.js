@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
   },
   LecturesContainer : {
       flexDirection : 'row',
-      flexWrap : 'wrap'
+      flexWrap : 'wrap',
+      backgroundColor : '#efefef'
   },
   lecturerItem : {
       width : ScreenWidth / 3,
@@ -45,25 +46,25 @@ const styles = StyleSheet.create({
       justifyContent : 'center',
   },
   ItemAvatar : {
-      height : 68,
-      width : 68,
-      borderRadius : 34,
+      height : 60,
+      width : 60,
+      borderRadius : 30,
       borderWidth : 2,
       borderColor : '#fff',
       shadowOffset : {
          width : 0,
-         height : 2,
+         height : 1,
       },
-      shadowRadius: 2,
+      shadowRadius: 3,
       shadowOpacity : 1,
       shadowColor : '#ccc',
       alignItems : 'center',
       justifyContent : 'center',
   },
   AvatarPic : {
-      height : 64,
-      width : 64,
-      borderRadius : 32,
+      height : 56,
+      width : 56,
+      borderRadius : 28,
       resizeMode : 'contain',
   },
   ItemNickname : {

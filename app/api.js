@@ -50,3 +50,8 @@ exports.fetchLecturerList = function(tag_id) {
   const apiUrl = `${apiPrefix}/category/${tag_id}/lecturers`;
   return _asyncFetch(apiUrl);
 }
+
+exports.fetchRecord = function(tag_id) {
+  const apiUrl = `${apiPrefix}/record/1`;
+  return _asyncFetch(apiUrl);
+}
