@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js  --platform ios --dev false --bundle-output ./ios/bundle/index.ios.jsbundle --assets-dest ./ios/bundle",
+    "test": "jest",
+    "lint": "eslint"
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",
@@ -18,12 +20,21 @@
     "react-navigation": "^1.0.0-beta.11"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-jest": "20.0.3",
     "babel-preset-react-native": "1.9.2",
+    "eslint": "^4.0.0",
+    "eslint-plugin-react": "^7.1.0",
     "jest": "20.0.4",
+    "metro-bundler": "^0.8.1",
+    "prop-types": "^15.5.10",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
-    "preset": "react-native"
-  }
+     "preset": "react-native",
+     "setupFiles": ["<rootDir>/jest/setup.js"],     
+     "transformIgnorePatterns": [
+         "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ]
+   }
 }
