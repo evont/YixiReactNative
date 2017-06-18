@@ -35,4 +35,4 @@ branches:
 script:
 - if [[ $TEST_TYPE == 'js' ]]; then npm run lint ./app/* && npm run lint ./app/pages/* ; fi
 - if [[ $TEST_TYPE == 'ios' ]]; then xcodebuild -project ios/$PROJECT_MOBILE.xcodeproj
-  -scheme $PROJECT_MOBILE -sdk iphonesimulator10.2 -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO clean build ; fi
+  -scheme $PROJECT_MOBILE -sdk iphonesimulator10.3 -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO clean build ; fi
