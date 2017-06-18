@@ -31,10 +31,6 @@
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
-     "preset": "react-native",
-     "setupFiles": ["<rootDir>/jest/setup.js"],     
-     "transformIgnorePatterns": [
-         "node_modules/(?!(jest-)?react-native|react-navigation)"
-    ]
+     "preset": "react-native"
    }
 }

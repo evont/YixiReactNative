@@ -1,11 +1,9 @@
 import 'react-native';
 import React from 'react';
 import Home from '../app/pages/Home';
-import Detail from '../app/pages/Detail';
 import Lecture from '../app/pages/Lecture';
 import Lecturer from '../app/pages/Lecturer';
 import Record from '../app/pages/Record';
-import PureContent from '../app/pages/PureContent';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
