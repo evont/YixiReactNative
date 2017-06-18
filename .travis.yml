@@ -10,8 +10,6 @@ matrix:
     sudo: false
     node_js: 6
     env: TEST_TYPE=js
-env:
-  ...
 # code climate配置
 addons:
   code_climate:
@@ -21,10 +19,7 @@ before_cache:
 cache:
   directories:
     - node_modules
-before_install:
-    - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then openssl aes-256-cbc -K $encrypted_549897007358_key -iv $encrypted_549897007358_iv
-        -in .travis/secrets.tar.enc -out secrets.tar -d ; fi
-    - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then tar xvf secrets.tar ; fi
+
 install:
 -curl -o-https://raw.githubusercontent.com/creationix/nvm/v0.30.0/install.sh| bash
 -source ~/.bashrc
