@@ -4,13 +4,13 @@
 
 [![Build Status](https://travis-ci.org/evont/YixiReactNative.svg?branch=master)](https://travis-ci.org/evont/YixiReactNative)
 
-#### Project Intro
+### Project Intro
 
 ​	使用React Native 进行一席 app 的仿制，已经使用react 全家桶进行了一席 web版仿制，所以项目直接使用已经做了代理的node 端进行数据获取，由于没有android 测试机，目前仅做了iOS 版本
 
 
 
-#### Tech Stack
+### Tech Stack
 
 - api：[一席 api 地址](https://github.com/jokermonn/-Api/blob/master/Yixi.md)
 
@@ -28,9 +28,9 @@
 
 - react-native-scrollable-tab-view ： 实现讲者及演讲的滚动切换标签
 
-  ​
 
-#### Project Structure
+
+### Project Structure
 
 ```
 
@@ -55,7 +55,7 @@
 
 
 
-#### Gallery
+### Gallery
 
 ![抽屉效果图](./capture/B6DC65F85A9951B244C100E2ED097C95.png)![首页渐隐效果](./capture/F07D11B7C19FC5193922DE9C4B5F21B2.png)
 
