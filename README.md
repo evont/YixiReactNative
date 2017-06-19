@@ -37,16 +37,16 @@
 ├── __tests__                  jest 测试用例
 ├── app                        项目代码目录
 │   ├──...
-│   ├── components   	         项目组件目录
-│   ├── images				         项目图片目录
-│   ├── pages				           子页面存放目录
-│   ├── api.js				         项目api 获取函数
-│   ├── global_style.js 	     项目通用样式
+│   ├── components   	       项目组件目录
+│   ├── images				   项目图片目录
+│   ├── pages				   子页面存放目录
+│   ├── api.js				   项目api 获取函数
+│   ├── global_style.js 	   项目通用样式
 │   └── root.js                项目入口文件
 ├── node_modules               node模块目录
-├── android					           Android 代码文件
-├── ios						             iOS 代码文件
-├── .travis.yml				         Travis CI 配置文件 
+├── android					   Android 代码文件
+├── ios						   iOS 代码文件
+├── .travis.yml				   Travis CI 配置文件 
 ├── .gitignore
 ├── package.json
 ├── README.md
