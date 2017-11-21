@@ -8,8 +8,6 @@
 
 ​	使用React Native 进行一席 app 的仿制，已经使用react 全家桶进行了一席 web版仿制，所以项目直接使用已经做了代理的node 端进行数据获取，由于没有android 测试机，目前仅做了iOS 版本
 
-
-
 ### Tech Stack
 
 - api：[一席 api 地址](https://github.com/jokermonn/-Api/blob/master/Yixi.md)
@@ -62,3 +60,8 @@
 ![演讲页面](./capture/7D2EBDDFCEE9A4A4B3BF3F70BC4CAF3A.png)![讲者页面](./capture/282A8C6AC9D23E2C6D510C64726CAB5C.png)
 
 ![细节页面](./capture/5A9F2F84F7C3C5705890D329CBB1C7F2.png)
+
+
+### Github
+
+[Github 地址](https://github.com/evont/YixiReactNative)
